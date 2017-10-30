@@ -1,0 +1,47 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:decorate xmlns="http://www.w3.org/1999/xhtml"
+             xmlns:h="http://xmlns.jcp.org/jsf/html"
+             xmlns:p="http://primefaces.org/ui"
+             xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+             template="template.xhtml">
+    <h:form>
+        <p:toolbar>
+            <p:toolbarGroup align="right">
+                <p:commandButton value="Adicionar" action="#{clienteBean.novoContato()}" update="@form" ></p:commandButton>   
+                <p:commandButton value="Listar" action="#{clienteBean.consultar()}" update="@form"></p:commandButton>               
+            </p:toolbarGroup>               
+        </p:toolbar>
+        <p:fieldset>
+            <p:panelGrid columns="2">
+                <h:outputLabel value="Nome"></h:outputLabel>
+                <p:inputText value="#{clienteBean.cliente.nome}"></p:inputText>
+                <h:outputLabel value="Sobrenome"></h:outputLabel>
+                <p:inputText value="#{clienteBean.cliente.sobrenome}"></p:inputText>
+                <p:outputLabel value="Cpf"></p:outputLabel>
+                <p:inputText value="#{clienteBean.cliente.cpf}"></p:inputText>
+                <h:outputLabel value="Endereço"></h:outputLabel>
+                <p:inputText value="#{clienteBean.cliente.endereco}"></p:inputText>
+                <h:outputLabel value="Complemento"></h:outputLabel>
+                <p:inputText value="#{clienteBean.cliente.complemento}"></p:inputText>
+                <h:outputLabel value="Cep"></h:outputLabel>
+                <p:inputText value="#{clienteBean.cliente.cep}"></p:inputText>
+                <h:outputLabel value="Bairro"></h:outputLabel>
+                <p:inputText value="#{clienteBean.cliente.bairro}"></p:inputText>
+                <h:outputLabel value="Estado"></h:outputLabel>
+                <p:inputText value="#{clienteBean.cliente.estado}"></p:inputText>
+                <h:outputLabel value="Cidade"></h:outputLabel>
+                <p:inputText value="#{clienteBean.cliente.cidade}"></p:inputText>
+                <h:outputLabel value="E-mail"></h:outputLabel>
+                <p:inputText value="#{clienteBean.cliente.email}"></p:inputText>
+                <h:outputLabel value="Telefone"></h:outputLabel>
+                <p:inputText value="#{clienteBean.cliente.telefone}"></p:inputText>
+                <h:outputLabel value="Celular"></h:outputLabel>
+                <p:inputText value="#{clienteBean.cliente.celular}"></p:inputText>
+
+            </p:panelGrid>   
+
+        </p:fieldset>                     
+    </h:form>
+</ui:decorate>
+
