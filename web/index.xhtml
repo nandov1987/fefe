@@ -23,14 +23,14 @@
 
 
                     <p:outputLabel value="Login" />
-                    <p:inputText size="30" required="true" label="login" value="#{loginBean.login.user}" />
+                    <p:inputText size="30" required="true" label="login" value="#{loginBean.entidade.user}" />
 
                     <p:outputLabel value="Senha" />
-                    <p:password size="30" required="true" label="Senha" value="#{loginBean.login.password}" />
+                    <p:password size="30" required="true" label="Senha" value="#{loginBean.entidade.password}" />
 
                     <h:panelGroup />
 
-                    <p:commandButton value="Login" action="#{loginBean.validar()}"/>
+                    <p:commandButton value="Login" action="#{loginBean.entidades.equals(entidade)}" />
 
                 </h:panelGrid>
 
