@@ -5,8 +5,9 @@ import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.Query;
 
-public class ClienteDAO extends DAO {
+public class ClienteDAO extends DAO implements CrudDAO<Cliente>{
 
+    @Override
     public void salvar(Cliente cliente) {
         EntityManager em = getEntityManager();
 
@@ -68,6 +69,7 @@ public class ClienteDAO extends DAO {
         }
     }
 
+    @Override
     public void delete(Cliente cliente) {
         EntityManager em = getEntityManager();
 
@@ -83,28 +85,7 @@ public class ClienteDAO extends DAO {
         }
     }
 
-    /*public List<Cliente> exibir_by_name(String nome){
-		EntityManager em = getEntityManager();
-		
-		Criteria criteria = getSession().createCriteria(Cliente.class);
-		//criteria.add(Restrictions.eq("nome", "Rafael"));
-		//criteria.add(Restrictions.like("nome", "%R%"));
-		//criteria.add(Restrictions.gt("ordem", 0));
-		//gt() : maior que
-		//ge() : maior ou igual que
-		//lt() : menor que
-		//le() : menor ou igual que
-		//Criterion cr1 = Restrictions.like("nome", "%R%");
-		//Criterion cr2 =  Restrictions.like("nome", "%T%");
-		
-		//LogicalExpression exp = Restrictions.or(cr1, cr2);
-		
-		//criteria.add(exp);
-		
-		criteria.add(Restrictions.like("nome", "%"+ nome +"%"));
-		
-		return criteria.list();
-	}*/
+    @Override
     public List<Cliente> exibir() {
         EntityManager em = getEntityManager();
 
