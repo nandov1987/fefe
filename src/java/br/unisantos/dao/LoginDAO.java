@@ -6,7 +6,7 @@ import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.Query;
 
-public class LoginDAO extends DAO {
+public class LoginDAO extends DAO implements CrudDAO<Login> {
 
     public Login autenticar(Login l) {
         List<Login> logins = new ArrayList<>();
@@ -29,12 +29,44 @@ public class LoginDAO extends DAO {
         return null;
     }
     
+    @Override
     public List<Login> exibir() {
         EntityManager em = getEntityManager();
 
         try {
             Query q = em.createQuery("select object(c) from Login as c");
             return q.getResultList();
+        } finally {
+            em.close();
+        }
+    }
+
+    @Override
+    public void salvar(Login login) {
+         EntityManager em = getEntityManager();
+
+        try {
+            em.getTransaction().begin();
+            Login l = em.find(Login.class, login.getId());
+            l.setUser(login.getUser());
+            l.setPassword(login.getPassword());          
+            em.getTransaction().commit();
+        } catch (Exception e) {
+            em.getTransaction().rollback();
+        }
+    }
+
+    @Override
+    public void delete(Login login) {
+         EntityManager em = getEntityManager();
+
+        try {
+            em.getTransaction().begin();
+            Login l = em.find(Login.class, login.getId());
+            em.remove(l);
+            em.getTransaction().commit();
+        } catch (Exception e) {
+            em.getTransaction().rollback();
         } finally {
             em.close();
         }
